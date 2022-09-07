@@ -9,9 +9,9 @@ void Graph::WaterFlow()
     unordered_map<Object*, list<Object*>>::iterator itr;
     for (itr = adj.begin(); itr != adj.end(); itr++)
     {
-        if (dynamic_cast<Source*>(itr->second.front()))
+        if (dynamic_cast<Source*>(itr->first))
         {
-            DFS(itr->second.front());//run dfs on the sourse of water
+            DFS(itr->first);//run dfs on the sourse of water
         }
     }
 }

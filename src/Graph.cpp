@@ -1,7 +1,9 @@
 #include "Graph.h"
 
 Graph::Graph() {}
-//run the water from all pipes
+
+//Start from each Source(tap) node in the graph
+//Run the DFS algorithm to stream water in every node connected
 void Graph::WaterFlow()
 {
     unordered_map<Object*, list<Object*>>::iterator itr;
@@ -13,17 +15,17 @@ void Graph::WaterFlow()
         }
     }
 }
-//==================================================
+//-----------------------------------------------------------
 Graph::~Graph()
 {
     adj.clear();
 }
-//============================================
+//-----------------------------------------------------------
 void Graph::addEdge(Object* head, Object* w)
 {
     adj[head].push_back(w); // Add w to v’s list.
 }
-//=========================================================
+//-----------------------------------------------------------
 //replace for a new list of neighbors for vetex
 void Graph::replaceEdge(Object* head, list<Object*> w)
 {
@@ -34,13 +36,13 @@ void Graph::replaceEdge(Object* head, list<Object*> w)
     adj[head].clear();
     adj[head] = w;
 }
-//=============================================================
+//-----------------------------------------------------------
 //delete edge for the opposite dir 
 void Graph::deleteEdge(Object* head, Object* w)
 {
     adj[head].remove(w);
 }
-//===================================================
+//-----------------------------------------------------------
 //smart algo dfs
 void Graph::DFS(Object* vertex)
 {

@@ -7,12 +7,8 @@ public:
 		Rotatable(Textures::instance().get_Textures(2), angle, location, size) 
 	{
 			m_edges[(angle+3)%4] = m_edges[(angle)] = true;
-		
-	
-		
 	};
 
 private:
-
 
 };

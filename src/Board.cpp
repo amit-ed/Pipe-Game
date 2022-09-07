@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 using namespace sf;
-//----------------------------------------------------------------------------
+//-----------------------------------------------------------
 /*
 constractor defult for game board
 m_cf:file pointer.
@@ -15,20 +15,17 @@ Board::Board()
    // set_Size();
     set_Map();
 }
-//=============================================
+//-----------------------------------------------------------
 Board::~Board()
 {
 	m_Board.clear();
 	m_destinations.clear();
 	
 }
-//--------------------------------------------------
-//--------------------------------------------------
-/*
-set the map
-* m_board : the vector for the map.
-* cur:local var for each string .
-*/
+//-----------------------------------------------------------
+//Set the map based on the map.txt file from resources
+//* m_board : the vector for the map.
+//* cur:local var for each string .
 bool Board::set_Map()
 {
 	std::string temp="";
@@ -46,17 +43,12 @@ bool Board::set_Map()
 		m_Board.push_back(temp);
 		counter++;
 		getline(m_file, temp);
-		
-		
 	}
 	m_size.x = counter;
 	return (!m_file.fail());
 }
-//----------------------------------------------------------------------------
-/*
-* set the game map and
-* return in
-*/
+//-----------------------------------------------------------
+//Creates all of the Objects in the game
 vector<vector<shared_ptr<Object>>> Board::get_map()
 {
 	vector<vector<shared_ptr<Object>>> map;
@@ -67,7 +59,7 @@ vector<vector<shared_ptr<Object>>> Board::get_map()
 	for (int i = 0; i < m_size.x; i++) {
 		vector<shared_ptr<Object>>temp(m_size.y);
 		for (int j = 0; j < m_size.y; j++) {
-			//----------------------creating block and setting their size--------------------------------------------------
+		//creating a pipe and at this location
 			
 			Vector2f location(STARTING_X + (j * length),
 				STARTING_Y + (i * length));
@@ -160,12 +152,10 @@ vector<vector<shared_ptr<Object>>> Board::get_map()
 		}
 		map.push_back(temp);
 	}
-	return map;//return the map of objects to the controller
+	return map; //return the map of objects to the controller
 }
-//=====================================================================
-/*
-* loading new map for each lvl
-*/
+//-----------------------------------------------------------
+//Loading new map for each lvl
 bool Board::rebuild_Map() {
 	m_Board.clear();
 	m_destinations.clear();

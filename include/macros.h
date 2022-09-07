@@ -23,5 +23,8 @@ constexpr auto threeD = 'P';
 constexpr auto threeL = '3';
 constexpr auto threeR = 'Q';
 
+constexpr auto Connected = 1;
+constexpr auto Disconnected = 0;
+
 constexpr auto Board_Height = 600;
 constexpr auto Board_Width = 600;

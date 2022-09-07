@@ -12,8 +12,8 @@ public:
 	~Object();
 	void Draw(sf::RenderWindow& window) const { window.draw(m_rec); };
 	bool Contain (const sf::Vector2f& location) const;
-	void connect() { m_connected = true; m_rec.setTexture(m_textures[1]); };
-	void disconnect() { m_connected = false; m_rec.setTexture(m_textures[0]); };
+	void connect() { m_connected = true; m_rec.setTexture(m_textures[Connected]); };
+	void disconnect() { m_connected = false; m_rec.setTexture(m_textures[Disconnected]); };
 	bool is_connected() const { return m_connected; };
 	virtual void Rotate(bool dir) {};
 	bool get_left_edge() const { return m_edges[0]; };

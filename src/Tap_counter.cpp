@@ -18,5 +18,4 @@ void Tap_counter::Draw(sf::RenderWindow& window) {
     m_text.setString(time.str());
     window.draw(m_text);
 }
-
 //======================================================

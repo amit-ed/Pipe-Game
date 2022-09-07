@@ -16,7 +16,7 @@ Controller::Controller() : m_window(sf::VideoMode(Board_Height + 350, Board_Widt
     }
     m_graph.WaterFlow();
  }
-//===============================================================
+//-----------------------------------------------------------
 Controller::~Controller()
 {
     for (auto x : m_Objects)
@@ -25,7 +25,7 @@ Controller::~Controller()
     }
     m_destinations.clear();
 }
-//===============================================================
+//-----------------------------------------------------------
 //main loop run the all game
 void Controller::run()
 {
@@ -39,7 +39,7 @@ void Controller::run()
         check_lvl();
     }
 }
-//===============================================================================
+//-----------------------------------------------------------
 /*
 print all tiles
 */
@@ -51,11 +51,10 @@ void Controller::print_objects() {//not const because m_tap.draw cant be const
     m_tap.Draw(m_window);
 }
 
-//================================================================================
-
-/// <summary>
-/// handle events like pressing the mouse or X to close the game
-/// </summary>
+//-----------------------------------------------------------
+// handle every mouth click
+// : A click inside a pipe object will rotate it
+// : A click on exit will close the game
 void Controller::handle_event()
 {
     sf::Event event;
@@ -96,7 +95,7 @@ void Controller::handle_event()
     }
 }
 
-//====================================================================
+//-----------------------------------------------------------
 ///if we clicked on the mouse so check if we clicked on one of the object of the game 
 void Controller::handleClick(const sf::Vector2f& location,bool dir)
 {  
@@ -128,7 +127,7 @@ void Controller::handleClick(const sf::Vector2f& location,bool dir)
         }
     }
 }
-//====================================================================
+//-----------------------------------------------------------
 ///set list OF NEIGHBORES
 void Controller::get_vertex(int i,int j)
 {
@@ -168,7 +167,8 @@ void Controller::get_vertex(int i,int j)
     }
     m_graph.replaceEdge(m_Objects[i][j].get(), temp);
 }
-//==================================================================
+
+//-----------------------------------------------------------
 //check if we finished the current LVL
 void Controller::check_lvl()
 {
@@ -206,7 +206,8 @@ void Controller::check_lvl()
     }
     m_graph.WaterFlow();
 }
-//==========================================================================
+
+//-----------------------------------------------------------
 //quit game and present WINNER screen
 void Controller::Quit_Game(int pic_num)
 {
@@ -231,4 +232,4 @@ void Controller::Quit_Game(int pic_num)
         }
     }
 }
-//=============================================================
+//-----------------------------------------------------------

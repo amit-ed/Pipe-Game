@@ -13,7 +13,6 @@ Object::Object(vector<Texture*> tex, int angle, Vector2f location, Vector2f size
 /*function to check if mouse is on object */
 bool Object::Contain(const sf::Vector2f& location) const
 {
-	
 	if (m_rec.getGlobalBounds().contains(location))
 		return true;
 	return false;
